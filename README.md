@@ -98,4 +98,3 @@ func main() {
 - [Godaily](http://godaily.org) - [github](https://github.com/godaily/news)
 - [FXH Blog](https://github.com/gofxh/blog)
 - [Gos](https://github.com/go-tango/gos)
-

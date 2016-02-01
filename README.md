@@ -41,12 +41,14 @@ func main() {
 ```
 
 然后在浏览器访问`http://localhost:8000`, 将会得到一个json返回
-```
+
+```Json
 {"say":"Hello tango!"}
 ```
 
 如果将上述例子中的 `true` 改为 `false`, 将会得到一个json返回
-```
+
+```Json
 {"err":"something error"}
 ```
 
@@ -59,7 +61,7 @@ func main() {
 - 模块化设计，可以很容易写出自己的中间件
 - 高性能的依赖注入方式
 
-## 中间件 
+## 中间件
 
 中间件让你像AOP编程那样来操作你的Controller。
 

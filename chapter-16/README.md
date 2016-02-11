@@ -128,9 +128,56 @@ func main() {
 }
 ```
 
+Go的模板如下
 ```html
 <!-- templates/captcha.tmpl -->
+<form>
 {{.captcha}}
+</form>
+```
+
+也支持和pongo2渲染中间件一起使用：
+```Go
+package main
+
+import (
+	"github.com/lunny/tango"
+	"github.com/tango-contrib/captcha"
+	"github.com/tango-contrib/tpongo2"
+)
+
+type CaptchaAction struct {
+	captcha.Captcha
+	tpongo2.Renderer
+}
+
+func (c *CaptchaAction) Get() error {
+	return c.Render("captcha_pongo.html", tpongo2.T{
+		"captcha": c.CreateHtml(),
+	})
+}
+
+func (c *CaptchaAction) Post() string {
+	if c.Verify() {
+		return "true"
+	}
+	return "false"
+}
+
+func main() {
+	t := tango.Classic()
+	t.Use(tpongo2.New(), captcha.New())
+	t.Any("/", new(CaptchaAction))
+	t.Run()
+}
+```
+
+Pongo2的模板如下
+```html
+<!-- templates/captcha.tmpl -->
+<form>
+{{captcha|safe}}
+</form>
 ```
 
 ## 选项
@@ -140,7 +187,7 @@ func main() {
 ```go
 // ...
 t.Use(captcha.New(captcha.Options{
-	Caches: cache,
+	Caches: cache, // 使用哪种Cache进行验证码数字的存储
 	URLPrefix:			"/captcha/", 	// URL prefix of getting captcha pictures.
 	FieldIdName:		"captcha_id", 	// Hidden input element ID.
 	FieldCaptchaName:	"captcha", 		// User input value element name in request form.

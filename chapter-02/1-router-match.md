@@ -30,6 +30,7 @@ tg.Get("/sss(*name)", new(Action))
 
 
 * 正则路由
+
 ```Go
 tg.Get("/(:name.*)", new(Action))
 tg.Get("/(:name[0-9]+)", new(Action))

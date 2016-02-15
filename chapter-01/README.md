@@ -49,10 +49,7 @@ func main() {
 
 这段代码因为拥有一个内嵌的`tango.Json`，所以返回值会被自动的转成Json
 
-HTML输出请查看[开发文档](https://github.com/lunny/tango/wiki/ZH_HOME)中的[Renders中间件](https://github.com/tango-contrib/renders)
-
 ## 使用
-
 
 `Tango` 对象是所有事情的开始。通常，我们只通过调用```tango.Classic()```就可以创建一个Tango对象，大多数情况都可以满足。如：
 

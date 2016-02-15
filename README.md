@@ -2,7 +2,7 @@
 
 Tango 是一个微内核易扩展的Go语言Web框架，他兼有Beego的效率和Martini的中间件设计。
 
-##### 当前版本: v0.4.5   [版本更新记录](https://github.com/lunny/tango/releases)
+##### 当前版本: v0.4.6   [版本更新记录](https://github.com/lunny/tango/releases)
 
 ## 简介
 

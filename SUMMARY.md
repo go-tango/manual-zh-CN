@@ -22,6 +22,7 @@
     * [Redis Store](chapter-10/3-redis.md)
     * [Ssdb Store](chapter-10/4-ssdb.md)
     * [Ledis Store](chapter-10/5-ledis.md)
+    * [Tracker](chapter-10/6-tracker.md)
 * [Flash](chapter-11/README.md)
 * [Events](chapter-12/README.md)
 * [Xsrf](chapter-13/README.md)

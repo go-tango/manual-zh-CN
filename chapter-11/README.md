@@ -1,3 +1,5 @@
+# Flash中间件
+
 Flash中间件为你在两次请求之间共享变量提供方便，他是一个 [Tango](https://github.com/lunny/tango) 的中间件。
 
 Flash中间件是一个基于 [session](https://github.com/tango-contrib/session) 的封装。

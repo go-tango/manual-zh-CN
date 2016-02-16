@@ -12,8 +12,6 @@ Session 是一个 [Tango](https://github.com/lunny/tango) 的 session 中间件.
 * [nodb](http://github.com/tango-contrib/session-nodb) - 使用nodb文件来保存Session
 * [ssdb](http://github.com/tango-contrib/session-ssdb) - 使用ssdb服务器来保存Session
 
-**注意，如果使用永久存储，并且Session里面存储了结构体，应在程序启动时进行结构体的gob注册**
-
 ## 安装
 
     go get github.com/tango-contrib/session

@@ -43,3 +43,26 @@ func main() {
     t.Run()
 }
 ```
+
+当然返回值也可以加上HTTP状态，如：
+
+```Go
+type Action struct {
+    tango.Json
+}
+
+var i int
+func (Action) Get() (int, interface{}) {
+   if i == 0 {
+       i = i + 1
+       return 200, map[string]interface{}{"i":i}
+   }
+   return 500, errors.New("could not visit")
+}
+
+func main() {
+    t := tango.Classic()
+    t.Any("/", new(Action))
+    t.Run()
+}
+```

@@ -11,6 +11,7 @@ type Handler interface {
 ```
 
 同时，tango也提供了```tango.HandlerFunc```，以方便你将一个函数包装为中间件。比如：
+
 ```Go
 func MyHandler() tango.HandlerFunc {
     return func(ctx *tango.Context) {
@@ -25,6 +26,7 @@ t.Run()
 ```
 
 正常的形式也可以是:
+
 ```
 type HelloHandler struct {}
 func (HelloHandler) Handle(ctx *tango.Context) {
@@ -39,6 +41,7 @@ t.Run()
 ```
 
 当然，你可以直接将一个包含tango.Context指针的函数作为中间件，如：
+
 ```Go
 tg.Use(func(ctx *tango.Context){
     fmt.Println("before")
@@ -48,15 +51,18 @@ tg.Use(func(ctx *tango.Context){
 ```
 
 为了和标准库兼容，tango通过UseHandler支持http.Handler作为中间件，如：
+
 ```Go
 tg.UseHandler(http.Handler(func(resp http.ResponseWriter, req *http.Request) {
 
 }))
 ```
+
 老的中间件会被action被匹配之前进行调用。
 
 # Call stack
 以下是中间件的调用顺序图：
+
 ```
 tango.ServeHttp
 |--Handler1

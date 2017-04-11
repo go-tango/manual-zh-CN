@@ -15,17 +15,19 @@
 * `AbortError`
 如果返回AbortError, 则写入返回头AbortError.Code，内容为AbortError.Error()
 
-如果包含了匿名结构体tango.Json或者tango.Xml，则返回值的行为将会发生变化：
+如果包含了匿名结构体 `tango.JSON` 或者 `tango.XML`，则返回值的行为将会发生变化：
+
 * `error`
-返回值为error，如果是Json，则会生成```{"err": err.Error()}```的Json格式
+返回值为error，如果是Json，则会生成`{"err": err.Error()}`的Json格式
 
 * `map`, `slice`, `structs`
 返回值为map，如果是Json，则会自动序列化为Json格式。
 
 例子代码如下：
+
 ```Go
 type Action struct {
-    tango.Json
+    tango.JSON
 }
 
 var i int
@@ -48,7 +50,7 @@ func main() {
 
 ```Go
 type Action struct {
-    tango.Json
+    tango.JSON
 }
 
 var i int

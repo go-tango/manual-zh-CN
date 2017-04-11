@@ -23,7 +23,7 @@ import (
 )
 
 type Action struct {
-    tango.Json
+    tango.JSON
 }
 
 func (Action) Get() interface{} {
@@ -54,7 +54,7 @@ func main() {
 {"err":"something error"}
 ```
 
-这段代码因为拥有一个内嵌的`tango.Json`，所以返回值会被自动的转成Json。具体返回可以参见以下文档。
+这段代码因为拥有一个内嵌的`tango.JSON`，所以返回值会被自动的转成Json。具体返回可以参见以下文档。
 
 ## 特性
 

@@ -3,6 +3,7 @@
 ## 安装
 
 安装Tango：
+
 ```go
 go get github.com/lunny/tango
 ```
@@ -18,7 +19,7 @@ import (
 )
 
 type Action struct {
-    tango.Json
+    tango.JSON
 }
 
 func (Action) Get() interface{} {
@@ -47,7 +48,7 @@ func main() {
 {"err":"something error"}
 ```
 
-这段代码因为拥有一个内嵌的`tango.Json`，所以返回值会被自动的转成Json
+这段代码因为拥有一个内嵌的`tango.JSON`，所以返回值会被自动的转成Json
 
 ## 使用
 

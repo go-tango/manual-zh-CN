@@ -1,12 +1,14 @@
 # Events 事件
 
 ## 安装
+
 ```
 go get github.com/tango-contrib/events
 ```
 
 ## 使用
 Events 中间件让你可以在方法体执行前和执行后执行相关的代码，如：
+
 ```Go
 type EventAction struct {
 	tango.Ctx

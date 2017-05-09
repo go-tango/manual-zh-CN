@@ -91,7 +91,7 @@ t.Route(map[string]string{"GET":"MyGet", "POST":"MyPost"}, "/", new(Action))
 ## GET参数获取实例：
 * 访问：http://xx.com/api/1.0/users?name=111  
 * 注：name需小写，首字母大写取不到
-```
+```Go
 import "github.com/tango-contrib/binding"
 
 type Getuser struct {
@@ -127,9 +127,9 @@ func (this *Getuser) Get() interface{} {
 ##POST参数获取实例:JSON格式
 * curl -H "Content-Type: application/json" -X POST  --Data '{ "Uid": "7","Aim_sn":"123456"}' -k https://xx.cn/inapi/1.0/setaiport
 
-```
+```Go
 type Settid struct {
-  tango.json
+  	tango.JSON
 	tango.Ctx
 }
 

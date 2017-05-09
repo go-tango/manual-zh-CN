@@ -95,7 +95,7 @@ t.Route(map[string]string{"GET":"MyGet", "POST":"MyPost"}, "/", new(Action))
 import "github.com/tango-contrib/binding"
 
 type Getuser struct {
-  tango.json
+  	tango.JSON
 	tango.Ctx
 	binding.Binder
 }

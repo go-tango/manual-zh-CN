@@ -88,3 +88,75 @@ t.Route(map[string]string{"GET":"MyGet", "POST":"MyPost"}, "/", new(Action))
 请求路径匹配后的参数可以通过*Context获得：
 * 命名路由和正则路由: `ctx.Param(":name")` 或者 `ctx.Param("name")`
 * 通配路由：`ctx.Param("*name")`
+## GET参数获取实例：
+* 访问：http://xx.com/api/1.0/users?name=111  
+* 注：name需小写，首字母大写取不到
+```Go
+import "github.com/tango-contrib/binding"
+
+type Getuser struct {
+  	tango.JSON
+	tango.Ctx
+	binding.Binder
+}
+
+func (this *Getuser) Get() interface{} {
+	type GetStruct struct {
+		Name string
+	}
+	var data GetStruct
+	err := this.Bind(&data)
+	if err != nil {
+		return map[string]interface{}{
+			"res":    "no",
+			"msg":    "get param error",
+			"err:":   err,
+			"status": 500,
+		}
+	}
+  fmt.Println(data.Name)//取值
+  .....
+  }
+  
+  //路由
+  func main() {
+    t := tango.Classic()
+    t.Get("/api/1.0/users", new(Getuser))
+    ...
+```
+##POST参数获取实例:JSON格式
+* curl -H "Content-Type: application/json" -X POST  --Data '{ "Uid": "7","Aim_sn":"123456"}' -k https://xx.cn/inapi/1.0/setaiport
+
+```Go
+type Settid struct {
+  	tango.JSON
+	tango.Ctx
+}
+
+func (this *Settid) Post() interface{} {
+
+	type jsondata struct {
+		Uid    string `json:"Uid"`
+		Tid    string `json:"Tid"`
+		Aim_sn string `json:"Aim_sn"`
+	}
+	var data jsondata
+	err = this.DecodeJSON(&data)
+	if err != nil {
+		return map[string]interface{}{
+			"res":    "no",
+			"msg":    "DecodeJSON error",
+			"err:":   err,
+			"status": 500,
+		}
+	}
+  fmt.Println(data.Uid)//取值
+  .....
+  }
+  
+  //路由
+  func main() {
+    t := tango.Classic()
+    t.Post("/inapi/1.0/setaiport", new(Settid))
+    ...
+```

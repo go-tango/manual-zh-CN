@@ -26,7 +26,7 @@ func (a *RenderAction) Get() error {
         "name": "tango",
     })
 }
-//模板有发动自动重载
+//模板有改动自动重载
 var  options = struct {
 	TemplatesDir string
 	Reload       bool

@@ -26,10 +26,19 @@ func (a *RenderAction) Get() error {
         "name": "tango",
     })
 }
-
+//模板有改动自动重载
+var  options = struct {
+	TemplatesDir string
+	Reload       bool
+	Suffix       string
+}{
+	Reload: true,
+	TemplatesDir: "./templates",
+	Suffix:".html",
+}
 func main() {
     o := tango.Classic()
-    o.Use(tpango2.New())
+    o.Use(tpango2.New(options))//加入自动重载
     o.Get("/", new(RenderAction))
 }
 ```

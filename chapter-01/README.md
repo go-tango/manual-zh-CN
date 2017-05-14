@@ -35,6 +35,8 @@ func main() {
     t := tango.Classic()
     t.Get("/", new(Action))
     t.Run()
+    //HTTPS支持
+    //t.RunTLS("server.crt","server.key")
 }
 ```
 

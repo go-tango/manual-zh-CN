@@ -120,7 +120,8 @@ func (this *Getuser) Get() interface{} {
   
   //路由
   func main() {
-    t := tango.Classic()
+	t := tango.Classic()
+	t.Use(binding.Bind())
     t.Get("/api/1.0/users", new(Getuser))
     ...
 ```

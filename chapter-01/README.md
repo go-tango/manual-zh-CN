@@ -35,6 +35,8 @@ func main() {
     t := tango.Classic()
     t.Get("/", new(Action))
     t.Run()
+    //指定监听端口
+    //t.Run("0.0.0.0:8080")
     //HTTPS支持
     //t.RunTLS("server.crt","server.key")
 }

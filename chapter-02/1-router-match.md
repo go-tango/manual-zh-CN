@@ -164,3 +164,39 @@ func (this *Settid) Post() interface{} {
     t.Post("/inapi/1.0/setaiport", new(Settid))
     ...
 ```
+
+##获取路由传参示例
+
+* 路由规则: tg.Route("GET", "/node/:name", new(Node))
+* curl http://localhost:8000/node/helloworld
+
+代码
+
+```
+package main
+
+import (
+	"github.com/lunny/tango"
+)
+
+type Node struct {
+	tango.Ctx
+}
+
+func (this *Node) Get() interface{} {
+	return this.Param("name")
+}
+
+func main() {
+	tg := tango.Classic()
+	tg.Route("GET", "/node/:name", new(Node))
+	tg.Run()
+}
+```
+
+效果
+
+```
+$ curl http://localhost:8000/node/helloworld
+helloworld⏎
+```
